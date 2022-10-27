@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::controller(ExcelController::class)->group(function(){
+    Route::get('booking-report', 'downloadBookingReport');
+    Route::get('month-wise-report', 'downloadMonthWiseReport');
+});
+        
 Route::get('/', function () {
     return view('welcome');
 });
